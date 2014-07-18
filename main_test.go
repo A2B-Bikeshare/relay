@@ -2,7 +2,6 @@ package relay
 
 import (
 	"errors"
-	"fmt"
 	"testing"
 )
 
@@ -56,7 +55,7 @@ func TestNewInvalid(t *testing.T) {
 func TestConfigJson(t *testing.T) {
 	_, err := New(nil)
 	if err == ErrNoConfig {
-		fmt.Println("You have no config.json")
+		t.Skipf("You have no config.json\n")
 		return
 	}
 
@@ -89,7 +88,7 @@ func TestSendFailure(t *testing.T) {
 func TestSendSuccess(t *testing.T) {
 	r, err := New(nil)
 	if err == ErrNoConfig {
-		fmt.Println("You have no config.json")
+		t.Skipf("You have no config.json\n")
 		return
 	}
 

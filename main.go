@@ -7,8 +7,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
-	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
@@ -75,7 +73,6 @@ func New(c *Config) (*Relay, error) {
 
 	// ensure all necessary fields are set
 	if r.to == "" || r.from == "" || r.key == "" || r.domain == "" {
-		fmt.Printf("%#v", r)
 		return nil, ErrBadConfig
 	} else {
 		return r, nil
@@ -110,15 +107,6 @@ func (r *Relay) Send(subject string, err error) error {
 	if err != nil {
 		return err
 	}
-
-	//fmt.Printf("res: %#v", res)
-	b, err := ioutil.ReadAll(res.Body)
-	rb := []byte(val.Encode())
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("req: %s", rb)
-	fmt.Printf("body: %s", b)
 
 	// Handle the errors
 	if res.StatusCode == 200 {

@@ -1,0 +1,6 @@
+{
+	"domain": "example.com",
+	"to": "recipient@sample.com",
+	"from": "sender@example.com",
+	"api_key": "someapikeyhere"
+}
