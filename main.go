@@ -7,9 +7,9 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
-	"net/url"
+	//"net/url"
 	"os"
-	"time"
+	//"time"
 )
 
 var ErrBadConfig = errors.New("The config does not contain the necessary information")
@@ -31,7 +31,7 @@ type Config struct {
 
 // New is used to generate a new Relay. If called with argument nil, it
 // reads from config.json
-func New(c Config) (*Relay, error) {
+func New(c *Config) (*Relay, error) {
 	// make a new relay
 	r := &Relay{
 		c: &http.Client{},
@@ -63,7 +63,7 @@ func New(c Config) (*Relay, error) {
 	}
 
 	// ensure all necessary fields are set
-	if r.to == nil || r.from == nil || r.key == nil {
+	if r.to == "" || r.from == "" || r.key == "" {
 		return nil, ErrBadConfig
 	} else {
 		return r, nil
