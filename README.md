@@ -1,4 +1,4 @@
-relay
-=====
+relay [![GoDoc](https://godoc.org/github.com/packrat386/relay?status.svg)](https://godoc.org/github.com/packrat386/relay)
+===== 
 
-A go client to report errors by email using vcarl/stalegun
+relay is a Go client to report emails using [Mailgun](www.mailgun.com). 
