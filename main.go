@@ -101,6 +101,7 @@ func (r *Relay) Send(subject string, err error) error {
 		return ErrBadRequest
 	}
 
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
 	req.SetBasicAuth("api", r.key)
 
 	// Do the request
